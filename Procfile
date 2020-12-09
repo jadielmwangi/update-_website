@@ -1,1 +1,1 @@
-web: gunicorn jadielproject.wsgi
+web: gunicorn jadiel.wsgi
