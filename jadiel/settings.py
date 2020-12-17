@@ -11,7 +11,11 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
+
 import os
+# added this line
+# from decouple import config
+
 ##added thse 3 lines
 import django_heroku
 import dj_database_url
@@ -83,11 +87,12 @@ STATICFILES_DIRS = (
 
 
 ## added the following lines
-EMAIL_USE_TLS = config('EMAIL_USE_TLS')
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
+
+# EMAIL_USE_TLS = config('EMAIL_USE_TLS')
+# EMAIL_HOST = config('EMAIL_HOST')
+# EMAIL_PORT = config('EMAIL_PORT')
+# EMAIL_HOST_USER = config('EMAIL_HOST_USER')
+# EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 
 
@@ -96,6 +101,9 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 # Application definition
 
 INSTALLED_APPS = [
+
+    'website.apps.WebsiteConfig',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -103,7 +111,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'website.apps.WebsiteConfig',
     'crispy_forms',
     'django_filters',
     'ckeditor',
@@ -139,6 +146,11 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                ## added this
+
+                'django.template.context_processors.media',
+            
+            
             ],
         },
     },
@@ -163,7 +175,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mwasmwasmwas',
         'USER': 'moringa',
-    'PASSWORD':'Access',
+        'PASSWORD':'Access',
     }
 }
 
@@ -228,12 +240,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'static/images')
 
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "jedielmwangi@gmail.com"
-EMAIL_HOST_PASSWORD = 'church95'
+EMAIL_HOST_PASSWORD = 'icumwfakpfiytvlc'
 
 CKEDITOR_UPLOAD_PATH = 'uploads/'
 
@@ -246,16 +258,6 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-
-
-
-# Email configurations remember to install python-decouple
-
-EMAIL_USE_TLS = config('EMAIL_USE_TLS')
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_PORT = config('EMAIL_PORT')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 
 
 
